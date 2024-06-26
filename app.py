@@ -6,9 +6,13 @@ import numpy as np
 
 from aura_sr import AuraSR
 import spaces
+import torch
 
-# Load the AuraSR model
-aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR").to("cuda")
+
+aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR", device_map="cpu")
+
+if torch.cuda.is_available():
+    aura_sr.to("cuda")
     
 @spaces.GPU
 def process_image(input_image):
