@@ -4,6 +4,7 @@ from PIL import Image
 import numpy as np
 from aura_sr import AuraSR
 import torch
+import spaces
 
 # Initialize the AuraSR model
 aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR")
@@ -12,6 +13,7 @@ aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR")
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 aura_sr.to(device)
 
+@spaces.GPU
 def process_image(input_image):
     if input_image is None:
         return None
