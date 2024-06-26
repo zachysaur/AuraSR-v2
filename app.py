@@ -6,8 +6,15 @@ from aura_sr import AuraSR
 import torch
 import spaces
 
+# Force CPU usage
+torch.set_default_tensor_type(torch.FloatTensor)
+
+# Override torch.load to always use CPU
+original_load = torch.load
+torch.load = lambda *args, **kwargs: original_load(*args, **kwargs, map_location=torch.device('cpu'))
+
 # Initialize the AuraSR model
-aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR", map_location=torch.device('cpu'))
+aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR")
 
 # Move the model to CUDA if available, otherwise keep it on CPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
