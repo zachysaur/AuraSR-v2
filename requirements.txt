@@ -1,2 +1,3 @@
 spaces
 aura-sr
+gradio-imageslider
