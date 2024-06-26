@@ -51,4 +51,17 @@ with gr.Blocks() as demo:
         outputs=output_slider
     )
 
+    # Add examples
+    gr.Examples(
+        examples=[
+            "image1.png",
+            "image2.png",
+            "image3.png"
+        ],
+        inputs=input_image,
+        outputs=output_slider,
+        fn=cached_process_image,
+        cache_examples=True
+    )
+
 demo.launch(debug=True)
