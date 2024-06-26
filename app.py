@@ -60,7 +60,7 @@ with gr.Blocks() as demo:
         ],
         inputs=input_image,
         outputs=output_slider,
-        fn=cached_process_image,
+        fn=process_image,
         cache_examples=True
     )
 
