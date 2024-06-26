@@ -16,9 +16,8 @@ torch.load = lambda *args, **kwargs: original_load(*args, **kwargs, map_location
 # Initialize the AuraSR model
 aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR")
 
-# Move the model to CUDA if available, otherwise keep it on CPU
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-aura_sr.to(device)
+# Restore original torch.load
+torch.load = original_load
 
 @spaces.GPU
 def process_image(input_image):
@@ -68,6 +67,5 @@ with gr.Blocks() as demo:
         inputs=[input_image],
         outputs=output_slider
     )
-
 
 demo.launch(debug=True)
