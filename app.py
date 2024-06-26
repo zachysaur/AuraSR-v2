@@ -35,9 +35,18 @@ def process_image(input_image):
     result_array = np.array(upscaled_image)
 
     return [input_image, result_array]
+    
+title = """<h1 align="center">AuraSR - An open reproduction of the GigaGAN Upscaler from fal.ai</h1>
+<p><center>
+<a href="https://blog.fal.ai/introducing-aurasr-an-open-reproduction-of-the-gigagan-upscaler-2/" target="_blank">[Blog Post]</a>
+<a href="https://huggingface.co/fal-ai/AuraSR" target="_blank">[Model Page]</a>
+</center></p>
+"""
 
 with gr.Blocks() as demo:
-    gr.Markdown("# Image Upscaler using AuraSR")
+    
+    gr.HTML(title)
+    
     with gr.Row():
         with gr.Column(scale=1):
             input_image = gr.Image(label="Input Image", type="numpy")
