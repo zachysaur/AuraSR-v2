@@ -6,20 +6,9 @@ from aura_sr import AuraSR
 import torch
 import spaces
 
-# Force CPU usage
-torch.set_default_tensor_type(torch.FloatTensor)
-
-# Override torch.load to always use CPU
-original_load = torch.load
-torch.load = lambda *args, **kwargs: original_load(*args, **kwargs, map_location=torch.device('cpu'))
-
 # Initialize the AuraSR model
 aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR")
 
-# Restore original torch.load
-torch.load = original_load
-
-@spaces.GPU
 def process_image(input_image):
     if input_image is None:
         return None
