@@ -34,7 +34,7 @@ def process_image(input_image):
     # Convert result to numpy array if it's not already
     result_array = np.array(upscaled_image)
 
-    return [input_array, result_array]
+    return [input_image, result_array]
 
 with gr.Blocks() as demo:
     gr.Markdown("# Image Upscaler using AuraSR")
