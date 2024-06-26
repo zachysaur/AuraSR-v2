@@ -7,7 +7,7 @@ import torch
 import spaces
 
 # Initialize the AuraSR model
-aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR")
+aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR", map_location=torch.device('cpu'))
 
 # Move the model to CUDA if available, otherwise keep it on CPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
