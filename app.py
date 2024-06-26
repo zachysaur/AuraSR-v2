@@ -8,7 +8,7 @@ from aura_sr import AuraSR
 import spaces
 
 # Load the AuraSR model
-aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR")
+aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR").to("cuda")
     
 @spaces.GPU
 def process_image(input_image):
