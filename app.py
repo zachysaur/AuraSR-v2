@@ -64,7 +64,6 @@ with gr.Blocks() as demo:
     gr.Examples(
         examples=[
             "image1.png",
-            "image2.png",
             "image3.png"
         ],
         inputs=input_image,
