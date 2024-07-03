@@ -19,22 +19,24 @@ aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR")
 # Restore original torch.load
 torch.load = original_load
 
-@spaces.GPU
 def process_image(input_image):
     if input_image is None:
-        return None
+        raise gr.Error("Please provide an image to upscale.")
 
     # Convert to PIL Image for resizing
     pil_image = Image.fromarray(input_image)
 
     # Upscale the image using AuraSR
-    with torch.no_grad():
-        upscaled_image = aura_sr.upscale_4x(pil_image)
+    upscaled_image = process_image_on_gpu(pil_image)
 
     # Convert result to numpy array if it's not already
     result_array = np.array(upscaled_image)
 
     return [input_image, result_array]
+
+@spaces.GPU
+def process_image_on_gpu(pil_image):
+    return aura_sr.upscale_4x(pil_image)
     
 title = """<h1 align="center">AuraSR - An open reproduction of the GigaGAN Upscaler from fal.ai</h1>
 <p><center>
