@@ -14,7 +14,7 @@ original_load = torch.load
 torch.load = lambda *args, **kwargs: original_load(*args, **kwargs, map_location=torch.device('cpu'))
 
 # Initialize the AuraSR model
-aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR-v2")
+aura_sr = AuraSR.from_pretrained("fal/AuraSR-v2")
 
 # Restore original torch.load
 torch.load = original_load
