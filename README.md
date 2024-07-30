@@ -1,5 +1,5 @@
 ---
-title: AuraSR
+title: AuraSR-v2
 emoji: 😻
 colorFrom: blue
 colorTo: red
