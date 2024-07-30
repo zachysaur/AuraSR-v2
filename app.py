@@ -1,10 +1,10 @@
+import spaces
 import gradio as gr
 from gradio_imageslider import ImageSlider
 from PIL import Image
 import numpy as np
 from aura_sr import AuraSR
 import torch
-import spaces
 
 # Force CPU usage
 torch.set_default_tensor_type(torch.FloatTensor)
