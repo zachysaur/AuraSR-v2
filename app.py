@@ -36,7 +36,7 @@ def process_image(input_image):
 
 @spaces.GPU
 def process_image_on_gpu(pil_image):
-    return aura_sr.upscale_4x_overlapped(pil_image)
+    return aura_sr.upscale_4x(pil_image)
     
 title = """<h1 align="center">AuraSR-v2 - An open reproduction of the GigaGAN Upscaler from fal.ai</h1>
 <p><center>
