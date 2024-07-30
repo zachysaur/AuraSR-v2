@@ -14,7 +14,7 @@ original_load = torch.load
 torch.load = lambda *args, **kwargs: original_load(*args, **kwargs, map_location=torch.device('cpu'))
 
 # Initialize the AuraSR model
-aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR")
+aura_sr = AuraSR.from_pretrained("fal-ai/AuraSR-v2")
 
 # Restore original torch.load
 torch.load = original_load
@@ -36,12 +36,13 @@ def process_image(input_image):
 
 @spaces.GPU
 def process_image_on_gpu(pil_image):
-    return aura_sr.upscale_4x(pil_image)
+    return aura_sr.upscale_4x_overlapped(pil_image)
     
-title = """<h1 align="center">AuraSR - An open reproduction of the GigaGAN Upscaler from fal.ai</h1>
+title = """<h1 align="center">AuraSR-v2 - An open reproduction of the GigaGAN Upscaler from fal.ai</h1>
 <p><center>
+<a href="https://huggingface.co/fal/AuraSR-v2" target="_blank">[AuraSR-v2]</a>
 <a href="https://blog.fal.ai/introducing-aurasr-an-open-reproduction-of-the-gigagan-upscaler-2/" target="_blank">[Blog Post]</a>
-<a href="https://huggingface.co/fal-ai/AuraSR" target="_blank">[Model Page]</a>
+<a href="https://huggingface.co/fal-ai/AuraSR" target="_blank">[v1 Model Page]</a>
 </center></p>
 """
 
