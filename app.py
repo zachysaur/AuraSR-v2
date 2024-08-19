@@ -78,4 +78,4 @@ with gr.Blocks() as demo:
         cache_examples=True
     )
 
-demo.launch(debug=True, share=True)
+demo.launch(debug=True, share=False)
